@@ -20,11 +20,11 @@ wss.on('connection', (ws) => {
 
 cron.schedule('*/10 * * * * *', async () => {
   // This code will be executed every 10 seconds
-  console.log("hello")
+  // console.log("hello")
   const url = 'http://3.108.252.150:5000/v1/getscore';
   await axios.get(url)
   .then((response) => {
-    console.log(response.data); // The response data from the API
+    // console.log(response.data); // The response data from the API
     if(response.data.state == true){
       clients.forEach(ws => {
         ws.send(JSON.stringify(response.data.score[1]));
